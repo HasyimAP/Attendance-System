@@ -8,3 +8,49 @@
 <a class="nav-item nav-link active" id="studentList3" href="/student-list3">Students</a>
 <a class="nav-item nav-link active" id="teacherList2" href="/teacher-list2">Teachers</a>
 {% endblock %}
+
+{% block content %}
+<h1 class="mt-3" align="center">Students Data</h1>
+
+<table class="table table-hover mt-3">
+    <thead>
+        <tr class="table-active">
+            <th scope="col">Student ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Batch</th>
+            <th scope="col">Semester</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1101191095</td>
+            <td>M. Hasyim Abdillah P.</td>
+            <td>2019</td>
+            <td>7</td>
+            <td>mhasyimap@student.telkomuniversity.ac.id</td>
+        </tr>
+        <tr>
+            <td>1101194128</td>
+            <td>Jiwa Sambhuwara</td>
+            <td>2019</td>
+            <td>7</td>
+            <td>jiwasambhuwara@student.telkomuniversity.ac.id</td>
+        </tr>
+        <tr>
+            <td>1101190374</td>
+            <td>Albi Pernata Jomantara Putra</td>
+            <td>2019</td>
+            <td>7</td>
+            <td>albipernata@student.telkomuniversity.ac.id</td>
+        </tr>
+        <tr>
+            <td>1101194396</td>
+            <td>I Gusti Made Wira Dhimas</td>
+            <td>2019</td>
+            <td>7</td>
+            <td>dhimasprasada@student.telkomuniversity.ac.id</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

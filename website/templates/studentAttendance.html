@@ -6,3 +6,83 @@
 <a class="nav-item nav-link active" id="studentAttendance" href="/student-attendance">Attendance</a>
 <a class="nav-item nav-link active" id="studentList2" href="/student-list2">Students</a>
 {% endblock %}
+
+{% block content %}
+<form>
+    <fieldset>
+        <div class="form-group" align="center">
+            <label for="inputDate" class="form-label mt-3">Choose date:</label>
+            <input type="date" class="form-control" id="inputDate" style="max-width: 25rem;">
+        </div>
+        <table class="table table-hover mt-3">
+            <thead>
+                <tr class="table-active">
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1101191095</td>
+                    <td>M. Hasyim Abdillah P.</td>
+                    <td>2019</td>
+                    <td>7</td>
+                    <td>mhasyimap@student.telkomuniversity.ac.id</td>
+                    <td>
+                        <input type="radio" class="form-check-input" name="hasyim" id="status1" value="present">
+                        <label for="status1">Present</label>
+                        <input type="radio" class="form-check-input" name="hasyim" id="status2" value="absent">
+                        <label for="status2">Absent</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1101194128</td>
+                    <td>Jiwa Sambhuwara</td>
+                    <td>2019</td>
+                    <td>7</td>
+                    <td>jiwasambhuwara@student.telkomuniversity.ac.id</td>
+                    <td>
+                        <input type="radio" class="form-check-input" name="jiwa" id="status1" value="present">
+                        <label for="status1">Present</label>
+                        <input type="radio" class="form-check-input" name="jiwa" id="status2" value="absent">
+                        <label for="status2">Absent</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1101190374</td>
+                    <td>Albi Pernata Jomantara Putra</td>
+                    <td>2019</td>
+                    <td>7</td>
+                    <td>albipernata@student.telkomuniversity.ac.id</td>
+                    <td>
+                        <input type="radio" class="form-check-input" name="albi" id="status1" value="present">
+                        <label for="status1">Present</label>
+                        <input type="radio" class="form-check-input" name="albi" id="status2" value="absent">
+                        <label for="status2">Absent</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1101194396</td>
+                    <td>I Gusti Made Wira Dhimas</td>
+                    <td>2019</td>
+                    <td>7</td>
+                    <td>dhimasprasada@student.telkomuniversity.ac.id</td>
+                    <td>
+                        <input type="radio" class="form-check-input" name="dhimas" id="status1" value="present">
+                        <label for="status1">Present</label>
+                        <input type="radio" class="form-check-input" name="dhimas" id="status2" value="absent">
+                        <label for="status2">Absent</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div align="center">
+            <button type="submit" class="btn btn-info mt-1">Submit</button>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

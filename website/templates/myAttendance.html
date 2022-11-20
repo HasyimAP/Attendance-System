@@ -4,6 +4,18 @@
 
 {% block nav_item %}
 <a class="nav-item nav-link active" id="studentAttendance" href="/my-attendance">My Attendance</a>
-<a class="nav-item nav-link active" id="teacherList1" href="/teacher-list1">Teachers</a>
 <a class="nav-item nav-link active" id="studentList1" href="/student-list1">Students</a>
+<a class="nav-item nav-link active" id="teacherList1" href="/teacher-list1">Teachers</a>
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-hover mt-3" style="max-width: 50rem;" align="center">
+    <thead>
+        <tr class="table-active">
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+</table>
 {% endblock %}
