@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block content %}
+{% for message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ message[1] }}
+    </div>
+{% endfor %}
 <h1 class="mt-3" align="center">Students Data</h1>
 
 <table class="table table-hover mt-3">
@@ -21,34 +27,15 @@
         </tr>
     </thead>
     <tbody>
+        {% for user in users %}
         <tr>
-            <td>1101191095</td>
-            <td>M. Hasyim Abdillah P.</td>
-            <td>2019</td>
-            <td>7</td>
-            <td>mhasyimap@student.telkomuniversity.ac.id</td>
+            <td>{{ user.student_id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.batch }}</td>
+            <td>{{ user.semester }}</td>
+            <td>{{ user.email }}</td>
         </tr>
-        <tr>
-            <td>1101194128</td>
-            <td>Jiwa Sambhuwara</td>
-            <td>2019</td>
-            <td>7</td>
-            <td>jiwasambhuwara@student.telkomuniversity.ac.id</td>
-        </tr>
-        <tr>
-            <td>1101190374</td>
-            <td>Albi Pernata Jomantara Putra</td>
-            <td>2019</td>
-            <td>7</td>
-            <td>albipernata@student.telkomuniversity.ac.id</td>
-        </tr>
-        <tr>
-            <td>1101194396</td>
-            <td>I Gusti Made Wira Dhimas</td>
-            <td>2019</td>
-            <td>7</td>
-            <td>dhimasprasada@student.telkomuniversity.ac.id</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

@@ -3,19 +3,44 @@
 {% block title %}Student page{% endblock %}
 
 {% block nav_item %}
-<a class="nav-item nav-link active" id="studentAttendance" href="/my-attendance">My Attendance</a>
-<a class="nav-item nav-link active" id="studentList1" href="/student-list1">Students</a>
-<a class="nav-item nav-link active" id="teacherList1" href="/teacher-list1">Teachers</a>
+<a class="nav-item nav-link active" id="studentAttendance" href="{{ url_for('studentAuth.myAttendance') }}">My Attendance</a>
+<a class="nav-item nav-link active" id="studentList1" href="{{ url_for('studentAuth.studentList1') }}">Students</a>
+<a class="nav-item nav-link active" id="teacherList1" href="{{ url_for('studentAuth.teacherList1') }}">Teachers</a>
 {% endblock %}
 
 {% block content %}
+{% for message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ message[1] }}
+    </div>
+{% endfor %}
+
+<div class="mt-1" align="center">
+    <h3>{{ name }}</h3>
+    <h4> ({{ student_id }}) </h4>
+</div>
 
 <table class="table table-hover mt-3" style="max-width: 50rem;" align="center">
     <thead>
         <tr class="table-active">
-            <th scope="col">Date</th>
+            <th scope="col">Date (YYYY-MM-DD)</th>
             <th scope="col">Status</th>
         </tr>
     </thead>
+    <tbody>
+        {% for date in date_att %}
+            <tr>
+                <td> {{ date.date }} </td>
+                <td >
+                    {% if date.status == 'Present' %}
+                        <span class="badge bg-success"> {{ date.status }} </span>
+                    {% elif date.status == 'Absent' %}
+                        <span class="badge bg-primary"> {{ date.status }} </span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

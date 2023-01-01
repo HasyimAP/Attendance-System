@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% for message in get_flashed_messages(with_categories=true) %}
     <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -19,28 +20,26 @@
     </div>
 {% endfor %}
 
-<h1 class="mt-3" align="center">Teachers Data</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
 
-<table class="table table-hover mt-3">
-    <thead>
-        <tr class="table-active">
-            <th scope="col">Teacher ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.user_id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>
-                <a class="btn btn-warning" href="{{ url_for('adminAuth.delTeacher', user_id=user.db_id)}}">Remove</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <h2 class="mt-3" align="center">
+        Add Admin's Information
+    </h2>
+
+    <div class="form-group">
+        {{ form.admin_id.label(class="form-label") }}
+        {{ form.admin_id(class="form-control") }}
+
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+    </div>
+    <br>
+    <div align="center">
+        {{ form.submit(class="btn btn-primary mt-1") }}
+    </div>
+</form>
 {% endblock %}

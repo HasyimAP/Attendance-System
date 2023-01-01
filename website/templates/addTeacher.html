@@ -3,33 +3,46 @@
 {% block title %}Admin page{% endblock %}
 
 {% block nav_item %}
-<a class="nav-item nav-link active" id="addStudent" href="/add-student">Add Student</a>
-<a class="nav-item nav-link active" id="addTeacher" href="/add-teacher">Add Teacher</a>
-<a class="nav-item nav-link active" id="studentList3" href="/student-list3">Students</a>
-<a class="nav-item nav-link active" id="teacherList2" href="/teacher-list2">Teachers</a>
+<a class="nav-item nav-link active" id="addStudent" href="{{ url_for('adminAuth.addStudent') }}">Add Student</a>
+<a class="nav-item nav-link active" id="addTeacher" href="{{ url_for('adminAuth.addTeacher') }}">Add Teacher</a>
+<a class="nav-item nav-link active" id="addAdmin" href="{{ url_for('adminAuth.addAdmin') }}">Add Admin</a>
+<a class="nav-item nav-link active" id="studentList3" href="{{ url_for('adminAuth.studentList3') }}">Students</a>
+<a class="nav-item nav-link active" id="teacherList2" href="{{ url_for('adminAuth.teacherList2') }}">Teachers</a>
+<a class="nav-item nav-link active" id="adminList" href="{{ url_for('adminAuth.adminList') }}">Admins</a>
 {% endblock %}
 
-{% block content%}
-<form>
-    <fieldset>
-        <h2 class="mt-3" align="center">
-            Add Teacher's Information
-        </h2>
-        <div class="form-group">
-            <label for="inputId" class="form-label">Teacher ID</label>
-            <input type="text" class="form-control" id="inputId" placeholder="teacher ID" pattern="[0-9]*" title="number only" required>
-    
-            <label for="inputName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="teacher full name" required>
-            
-            <label for="inputEmail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="enter email" required>
-        </div>
-    </div>
+{% block content %}
 
-    <div align="center">
-        <button type="submit" class="btn btn-primary mt-1">Submit</button>
+{% for message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ message[1] }}
     </div>
-    </fieldset>
+{% endfor %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <h2 class="mt-3" align="center">
+        Add Teacher's Information
+    </h2>
+
+    <div class="form-group">
+        {{ form.teacher_id.label(class="form-label") }}
+        {{ form.teacher_id(class="form-control") }}
+
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+    </div>
+    <br>
+    <div align="center">
+        {{ form.submit(class="btn btn-primary mt-1") }}
+    </div>
 </form>
 {% endblock %}

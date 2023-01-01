@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% for message in get_flashed_messages(with_categories=true) %}
     <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -19,13 +20,12 @@
     </div>
 {% endfor %}
 
-<h1 class="mt-3" align="center">Teachers Data</h1>
+<h1 class="mt-3" align="center">Admins Data</h1>
 
 <table class="table table-hover mt-3">
     <thead>
         <tr class="table-active">
-            <th scope="col">Teacher ID</th>
-            <th scope="col">Name</th>
+            <th scope="col">Admin ID</th>
             <th scope="col">Email</th>
             <th scope="col"></th>
         </tr>
@@ -34,10 +34,9 @@
         {% for user in users %}
         <tr>
             <td>{{ user.user_id }}</td>
-            <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>
-                <a class="btn btn-warning" href="{{ url_for('adminAuth.delTeacher', user_id=user.db_id)}}">Remove</a>
+                <a class="btn btn-warning" href="{{ url_for('adminAuth.delAdmin', user_id=user.db_id) }}">Remove</a>
             </td>
         </tr>
         {% endfor %}

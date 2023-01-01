@@ -3,12 +3,18 @@
 {% block title %}Student page{% endblock %}
 
 {% block nav_item %}
-<a class="nav-item nav-link active" id="studentAttendance" href="/my-attendance">My Attendance</a>
-<a class="nav-item nav-link active" id="studentList1" href="/student-list1">Students</a>
-<a class="nav-item nav-link active" id="teacherList1" href="/teacher-list1">Teachers</a>
+<a class="nav-item nav-link active" id="studentAttendance" href="{{ url_for('studentAuth.myAttendance') }}">My Attendance</a>
+<a class="nav-item nav-link active" id="studentList1" href="{{ url_for('studentAuth.studentList1') }}">Students</a>
+<a class="nav-item nav-link active" id="teacherList1" href="{{ url_for('studentAuth.teacherList1') }}">Teachers</a>
 {% endblock %}
 
 {% block content %}
+{% for message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-dismissible alert-{{ message[0] }} mt-1">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ message[1] }}
+    </div>
+{% endfor %}
 <h1 class="mt-3" align="center">Teachers Data</h1>
 
 <table class="table table-hover mt-3">
@@ -17,29 +23,17 @@
             <th scope="col">Teacher ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
+        {% for user in users %}
         <tr>
-            <td>1101191095</td>
-            <td>M. Hasyim Abdillah P.</td>
-            <td>mhasyimap@student.telkomuniversity.ac.id</td>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
         </tr>
-        <tr>
-            <td>1101194128</td>
-            <td>Jiwa Sambhuwara</td>
-            <td>jiwasambhuwara@student.telkomuniversity.ac.id</td>
-        </tr>
-        <tr>
-            <td>1101190374</td>
-            <td>Albi Pernata Jomantara Putra</td>
-            <td>albipernata@student.telkomuniversity.ac.id</td>
-        </tr>
-        <tr>
-            <td>1101194396</td>
-            <td>I Gusti Made Wira Dhimas</td>
-            <td>dhimasprasada@student.telkomuniversity.ac.id</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
