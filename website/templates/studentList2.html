@@ -3,8 +3,8 @@
 {% block title %}Teacher page{% endblock %}
 
 {% block nav_item %}
-<a class="nav-item nav-link active" id="studentAttendance" href="/student-attendance">Attendance</a>
-<a class="nav-item nav-link active" id="studentList2" href="/student-list2">Students</a>
+<a class="nav-item nav-link active" id="studentAttendance" href="{{ url_for('teacherAuth.studentAttendance') }}">Attendance</a>
+<a class="nav-item nav-link active" id="studentList2" href="{{ url_for('teacherAuth.studentList2') }}">Students</a>
 {% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@
     <tbody>
         {% for user in users %}
         <tr>
-            <td>{{ user.student_id }}</td>
+            <td>{{ user.user_id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.batch }}</td>
             <td>{{ user.semester }}</td>
