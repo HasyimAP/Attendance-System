@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'CloudComputingSAOTeam1'
+    app.config['SECRET_KEY'] = ''
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' 
     db.init_app(app)
 
